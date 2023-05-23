@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Website</title>
+    <link rel="stylesheet" href="public/CSS/companyform.css">
+    
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+
+
+
+    <h1 id="title">Comapny Details Form</h1>
+    <p id="description">Thanks for your time to visit our site! </p>
+    
+    <form id="survey-form">
+     
+        <div class="form-structure">
+     
+        <fieldset>
+       
+       
+        <label id="name-label">Channel Name: <input id="name" type="text" name="Name" required placeholder="Enter your channel's name">
+       </label>
+       <label id="email-label">Channel Link: <input id="email" type="email" name="email" placeholder="Enter your channel's link" required></label>
+
+
+       <label id="number-label">Age: <input id="number" type="number" name="age" placeholder="Age" min="10" max="99"></label>
+
+       
+
+
+       
+     </fieldset>
+
+
+     
+
+
+     <fieldset class="Third-field">
+
+
+       <label>What is your channel about? (check all that apply)
+         <label><input type="checkbox" value="More-Event" class="inline"> Education</label>
+         <label><input type="checkbox" value="Collabs" class="inline"> Gaming</label>
+         <label><input type="checkbox" value="Streaming" class="inline"> Lifestyle</label>
+         <label><input type="checkbox" class="inline" value="Challenges"> Sports</label>
+         <label><input type="checkbox" class="inline" value="Training"> Trainings
+         
+         
+      </fieldset>
+      <fieldset>
+       
+            <label> Write a description for your profile
+              <textarea name="suggestions" rows="3" cols="35" placeholder="Enter your description here..."></textarea></label>
+           
+
+        <div class="file-input">
+            <input type="file" id="file" >
+            <label for="file" class="file">Upload a profile picture<i class="fa-solid fa-cloud-arrow-up"></i></label>
+             <div class="img"></div>
+          </div>
+
+
+
+
+
+      </fieldset>
+
+
+
+     </div>
+
+     <input type="submit" value="SUBMIT" id="submit">
+
+    </form>
+
+    
+
+
+    <main>
+
+      
+    </main>
+	
+  </body>
