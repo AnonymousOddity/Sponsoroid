@@ -1,3 +1,11 @@
+
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    font-family: "Montserrat", sans-serif;
+   
+}
 body{
     margin-top:20px;
     color: #1a202c;
@@ -5,19 +13,38 @@ body{
     background-color: #65CCBB;
     font-family: "Montserrat", sans-serif;
 }
+.padding-16{padding-top:16px!important;padding-bottom:16px!important}
 
 
-.top{
+.-top{
+  
     width:100%;
     overflow:hidden;
     color:#65CCBB !important; 
-    background-color:#182628 !important;
+    background-color:#000000 !important;
     text-align:left!important;
     position:fixed;
     width:100%;z-index:1;top:0;
     font-family: "Montserrat", sans-serif;
 }
+.topb{
+    width:100%;overflow:hidden;
+    color:#fff !important; background-color:#000000 !important;
+    text-align:left!important;
+}
 
+.btn{border:none;display:inline-block;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap;
+
+}
+
+  .center{text-align:center!important}.theme-1 {color:#fff !important; background-color:#000000 !important}
+  
+.hide-small{display:none !important}
+.bar .bar-item{padding:8px 16px;float:left;width:auto;border:none;display:block;outline:0}
+.c-white,.c-hover-white:hover{color:#000!important;background-color:#fff!important}
+.c-teal{color:#fff!important;background-color:#57BA98!important}
+.right{float:right!important}
+.ci{   border-radius: 88px;}.cir{border-radius:50%}
 .main-body {
     padding: 15px;
     font-family: "Montserrat", sans-serif;
