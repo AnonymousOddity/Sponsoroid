@@ -7,6 +7,7 @@ const encrypt = require("mongoose-encryption");
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
+const multer = require('multer');
 
 app.get("/",function(req,res){
 res.sendFile(__dirname + "/main.html");
@@ -17,6 +18,14 @@ res.sendFile(__dirname+ "/Login-creator.html");
 app.get("/logincompany",function(req,res){
 res.sendFile(__dirname + "/Login-company.html");
 });
+app.get("/creatorform",function(req,res){
+    res.sendFile(__dirname + "/creatorform.html");
+    });
+app.get("/companyform",function(req,res){
+    res.sendFile(__dirname + "/companyform.html");
+});
+
+            
 mongoose.connect('mongodb+srv://riteshbaindara25:Ai9L6V2WquLRNmug@cluster0.stgntt6.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log("MONGO CONNECTION OPEN!!!")
@@ -25,28 +34,58 @@ mongoose.connect('mongodb+srv://riteshbaindara25:Ai9L6V2WquLRNmug@cluster0.stgnt
         console.log("OH NO MONGO CONNECTION ERROR!!!!")
         console.log(err)
 })
+const storage = multer.diskStorage({
+    destination:"public/images/",
+    filename: (req,file,cb)=>{
+        cb(null,file.originalname)
+    }
 
+})
+const allcomapanies =[];
 const creatorSchema = new mongoose.Schema({
     username: String,
+    name: String,
     email: String,
+    Instalink: String,
+    Youtubelink: String,
     password: String,
-    
+    TypeofContent: String,
+    Descryption: String,
+    avatar: String
 });
-
 const sec = "Thisisourliitlesecret";
 creatorSchema.plugin(encrypt,{secret:sec, encryptedFields:["password"]});
-const creator = mongoose.model("creator",creatorSchema);
+module.exports = creator = mongoose.model("creator",creatorSchema);
 
-app.post("/creatorsignup",function(req,res){
-const newcreator = new creator({
-    username: req.body.username,
-    email: req.body.email,
-    password: req.body.password
-});
-newcreator.save();
-res.write("<h1>ho gya tu signup bhadwe</h1>");
-res.send;
-});
+const upload = multer({
+storage:storage
+}).single('avatar');
+
+app.post("/creatorsignup",(req,res)=>{
+upload(req,res,(err)=>{
+    if(err){
+        console.log(err);
+    }
+    else{
+        const newcreator = new creator({
+            username: req.body.username,
+            name: req.body.name,
+            email: req.body.email,
+            Instalink: req.body.Instalink,
+            Youtubelink: req.body.Youtubelink,
+            password: req.body.password,
+            TypeofContent: req.body.TypeofContent,
+            Descryption: req.body.Descryption,
+            avatar: req.file.filename
+        });
+        newcreator.save();
+        
+        company.find({}).then(function(items){
+            res.render("creator-1",{y:newcreator,comp:items});
+        });
+    }
+})
+})
 
 app.post("/creatorlogin",function(req,res){
     const username = req.body.username;
@@ -55,37 +94,55 @@ app.post("/creatorlogin",function(req,res){
     creator.findOne({username:username}).then(post=>{
         if(post===null){
             res.write("<h1>Not registered</h1>");
-            res.send;
+           
         }
-        else if(post.password===password){
-          res.write("<h1>successfully login</h1>");
-          res.send;
+        else if(post.password===password){ 
+        company.find({}).then(function(items){
+            res.render("creator-1",{y:post,comp:items});
+        });
         }
         else{
             console.log(post.password);
         }
         });
 });
-
 const companySchema = new mongoose.Schema({
     username: String,
+    name: String,
     email: String,
     password: String,
+    TypeofContent: String,
+    Descryption: String,
+    avatar: String
     
 });
 companySchema.plugin(encrypt,{secret:sec, encryptedFields:["password"]});
-const company = mongoose.model("company",creatorSchema);
-app.post("/companysignup",function(req,res){
-    const newcompany = new company({
-        username: req.body.username,
-        email: req.body.email,
-        password: req.body.password
-    });
-    console.log(req.body.username);
-    newcompany.save();
-    res.write("<h1>ho gya tu signup company bhadwe</h1>");
-    res.send;
-});
+module.exports = company = mongoose.model("company",creatorSchema);
+
+
+app.post("/companysignup",(req,res)=>{
+    upload(req,res,(err)=>{
+        if(err){
+            console.log(err);
+        }
+        else{
+            const newcompany = new company({
+            username: req.body.username,
+            name: req.body.name,
+            email: req.body.email,
+            password: req.body.password,
+            TypeofContent: req.body.TypeofContent,
+            Descryption: req.body.Descryption,
+            avatar: req.file.filename
+            });
+            newcompany.save();
+            console.log(newcompany.avatar);
+            creator.find({}).then(function(items){
+                res.render("company-1",{y:post,comp:items});
+            });
+        }
+    })
+})
 app.post("/companylogin",function(req,res){
     const username = req.body.username;
     const password = req.body.password;
@@ -96,8 +153,9 @@ app.post("/companylogin",function(req,res){
             res.send;
         }
         else if(post.password===password){
-          res.write("<h1>successfully login</h1>");
-          res.send;
+            creator.find({}).then(function(items){
+                res.render("company-1",{y:post,comp:items});
+            });
         }
         else{
             console.log(post.password);
@@ -105,8 +163,15 @@ app.post("/companylogin",function(req,res){
         });
 });
 
-
+app.post("/temp",function(req,res){
+    console.log(req.body.Description);
+    res.render("profile",{img:req.body.avatar,ul:req.body.ulink,il:req.body.ilink,n:req.body.name,e:req.body.email,c:req.body.cc,d:req.body.Description});
+})
+app.post("/temp2",function(req,res){
+    console.log(req.body.Description);
+    res.render("profilecompany",{img:req.body.avatar,ul:req.body.ulink,il:req.body.ilink,n:req.body.name,e:req.body.email,c:req.body.cc,d:req.body.Description});
+})
 app.listen(3000,function(){
-    console.log("haa bhai kam  gya");
+    console.log("haa bhai kam gya");
 });
 // Ai9L6V2WquLRNmug
