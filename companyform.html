@@ -1,94 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Website</title>
-    <link rel="stylesheet" href="public/CSS/companyform.css">
-    
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Sign Up Form by Colorlib</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-
-  </head>
-  <body>
-
-
-
-    <h1 id="title">Comapny Details Form</h1>
-    <p id="description">Thanks for your time to visit our site! </p>
-    
-    <form id="survey-form">
-     
-        <div class="form-structure">
-     
-        <fieldset>
-       
-       
-        <label id="name-label">Channel Name: <input id="name" type="text" name="Name" required placeholder="Enter your channel's name">
-       </label>
-       <label id="email-label">Channel Link: <input id="email" type="email" name="email" placeholder="Enter your channel's link" required></label>
-
-
-       <label id="number-label">Age: <input id="number" type="number" name="age" placeholder="Age" min="10" max="99"></label>
-
-       
-
-
-       
-     </fieldset>
-
-
-     
-
-
-     <fieldset class="Third-field">
-
-
-       <label>What is your channel about? (check all that apply)
-         <label><input type="checkbox" value="More-Event" class="inline"> Education</label>
-         <label><input type="checkbox" value="Collabs" class="inline"> Gaming</label>
-         <label><input type="checkbox" value="Streaming" class="inline"> Lifestyle</label>
-         <label><input type="checkbox" class="inline" value="Challenges"> Sports</label>
-         <label><input type="checkbox" class="inline" value="Training"> Trainings
-         
-         
-      </fieldset>
-      <fieldset>
-       
-            <label> Write a description for your profile
-              <textarea name="suggestions" rows="3" cols="35" placeholder="Enter your description here..."></textarea></label>
-           
-
-        <div class="file-input">
-            <input type="file" id="file" >
-            <label for="file" class="file">Upload a profile picture<i class="fa-solid fa-cloud-arrow-up"></i></label>
-             <div class="img"></div>
-          </div>
-
-
-
-
-
-      </fieldset>
-
-
-
-     </div>
-
-     <input type="submit" value="SUBMIT" id="submit">
-
-    </form>
-
-    
-
-
-    <main>
-
-      
-    </main>
-	
-  </body>
+<link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+<link rel="stylesheet" href="css/creatorform.css">
+<meta name="robots" content="noindex, follow">
+<script nonce="0b077249-2a3d-42f9-bc97-260f736f3a6d">(function(w,d){!function(bg,bh,bi,bj){bg[bi]=bg[bi]||{};bg[bi].executed=[];bg.zaraz={deferred:[],listeners:[]};bg.zaraz.q=[];bg.zaraz._f=function(bk){return function(){var bl=Array.prototype.slice.call(arguments);bg.zaraz.q.push({m:bk,a:bl})}};for(const bm of["track","set","debug"])bg.zaraz[bm]=bg.zaraz._f(bm);bg.zaraz.init=()=>{var bn=bh.getElementsByTagName(bj)[0],bo=bh.createElement(bj),bp=bh.getElementsByTagName("title")[0];bp&&(bg[bi].t=bh.getElementsByTagName("title")[0].text);bg[bi].x=Math.random();bg[bi].w=bg.screen.width;bg[bi].h=bg.screen.height;bg[bi].j=bg.innerHeight;bg[bi].e=bg.innerWidth;bg[bi].l=bg.location.href;bg[bi].r=bh.referrer;bg[bi].k=bg.screen.colorDepth;bg[bi].n=bh.characterSet;bg[bi].o=(new Date).getTimezoneOffset();if(bg.dataLayer)for(const bt of Object.entries(Object.entries(dataLayer).reduce(((bu,bv)=>({...bu[1],...bv[1]})))))zaraz.set(bt[0],bt[1],{scope:"page"});bg[bi].q=[];for(;bg.zaraz.q.length;){const bw=bg.zaraz.q.shift();bg[bi].q.push(bw)}bo.defer=!0;for(const bx of[localStorage,sessionStorage])Object.keys(bx||{}).filter((bz=>bz.startsWith("_zaraz_"))).forEach((by=>{try{bg[bi]["z_"+by.slice(7)]=JSON.parse(bx.getItem(by))}catch{bg[bi]["z_"+by.slice(7)]=bx.getItem(by)}}));bo.referrerPolicy="origin";bo.src="/cdn-cgi/zaraz/s.js?z="+btoa(encodeURIComponent(JSON.stringify(bg[bi])));bn.parentNode.insertBefore(bo,bn)};["complete","interactive"].includes(bh.readyState)?zaraz.init():bg.addEventListener("DOMContentLoaded",zaraz.init)}(w,d,"zarazData","script");})(window,document);</script></head>
+<body>
+<div class="main">
+<div class="container">
+<form method="POST" action="/companysignup" class="appointment-form"  enctype="multipart/form-data" id="appointment-form">
+<h2>Set Your Information</h2>
+<div class="form-group-1">
+<input type="text" name="username" id="title" placeholder="Username" required />
+<input type="text" name="name" id="name" placeholder="Company Name" required />
+<input type="text" name="email" id="name" placeholder="E-mail" required />
+<input type="link" name="Instalink" id="email" placeholder="Linkedin link" required />
+<input type="link" name="Youtubelink" id="email" placeholder="Twitter Link" required />
+<input type="password" name="password" id="channel link" placeholder="Set Your Password" required />
+<div class="select-list">
+<select name="TypeofContent" id="course_type" >
+<option slected value="">Type Of Content creator company wants</option>
+<option value="Gaming">Gaming</option>
+<option value="LifeStyle">LifeStyle</option>
+<option value="Technology">Technology</option>
+<option value="Dancing">Dancing</option>
+<option value="Sports">Sports</option>
+</select>
+</div>
+</div>
+<div class="form-group-2">
+<h3>Tell Us More About company</h3>
+<div class="select-list">
+ <h3>Write a description for your company profile</h3>
+ <input type="text" name="Descryption" id="title" placeholder="Write about yourself" required />
+</select>
+</div>
+<h3>Upload your Profile Photo</h3>
+  <input type="file" id="myFile" name="avatar">
+</div>
+<div class="form-check">
+    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+  <label for="vehicle1" ><I> agree to></I> <a href="" >Terms and conditions</a></label>
+<div class="form-submit">
+<input type="submit"  id="submit" class="submit" value="Submit" />
+<button id="submit" class="submit"><a href="/logincompany">Log in</a></button>
+</div>
+</form>
+</div>
+</div>
+</body>
+</html>
